@@ -30,7 +30,7 @@ class TodoListController @Inject()(val controllerComponents: ControllerComponent
       case None       => NotFound // 404 not found
     }
   }
-//  put
+//  post
   def addNewItem() = Action { implicit request =>
     val content = request.body
     val jsonObject = content.asJson
@@ -47,6 +47,33 @@ class TodoListController @Inject()(val controllerComponents: ControllerComponent
         Created(Json.toJson(toBeAdded))
       case None =>
         BadRequest
+    }
+  }
+//  patch
+//  Action[JsValue] is a request handler that expects JSON in the body
+  def updateById(itemId: Long): Action[JsValue] =
+//  if the body is not raw json will produce a 400 response
+    Action(parse.json) { request =>
+    val update = request.body.validate[TodoUpdate]
+
+    update.fold()
+
+  }
+//  delete
+  def deleteById(itemId: Long): Action[AnyContent] = Action {
+    val itemIndex = todoList.indexWhere(_.id == itemId)
+    if(itemIndex == -1) NotFound
+    else {
+      todoList.remove(itemIndex)
+      NoContent
+    }
+  }
+  def deleteAll(): Action[AnyContent] = Action{
+    if (todoList.isEmpty) {
+      NoContent
+    } else {
+      todoList.clear()
+      NoContent
     }
   }
 }
