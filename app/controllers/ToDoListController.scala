@@ -17,7 +17,14 @@ class TodoListController @Inject()(val controllerComponents: ControllerComponent
     if (todoList.isEmpty) {
       NoContent
     } else {
-      Ok(Json.toJson(todoList))
+      Ok(Json.toJson(todoList)) // 200 ok
+    }
+  }
+  def getById(itemId: Long): Action[AnyContent] = Action {
+    val foundItem = todoList.find(_.id == itemId)
+    foundItem match {
+      case Some(item) => Ok(Json.toJson(item))
+      case None       => NotFound // 404 not found
     }
   }
 }

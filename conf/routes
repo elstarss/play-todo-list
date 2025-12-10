@@ -1,3 +1,6 @@
 # Routes
-
+# Get all to do items
 GET     /todo                       controllers.TodoListController.getAll
+# Get items by ID
+# Everything after  t o d o will be assigned to itemId variable
+GET    /todo/:itemId           controllers.TodoListController.getById(itemId: Long)
