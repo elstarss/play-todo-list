@@ -6,13 +6,16 @@ import play.api.mvc._
 import play.api.libs.json._
 import scala.collection.mutable
 import models.TodoListItem
+import models.NewTodoListItem
 
 @Singleton
 class TodoListController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
   private val todoList = new mutable.ListBuffer[TodoListItem]()
   implicit val todoListJson = Json.format[TodoListItem]
+  implicit val newTodoListJson = Json.format[NewTodoListItem]
   todoList += TodoListItem(1, "test", true)
   todoList += TodoListItem(2, "some other value", false)
+//  get
   def getAll(): Action[AnyContent] = Action {
     if (todoList.isEmpty) {
       NoContent
@@ -25,6 +28,25 @@ class TodoListController @Inject()(val controllerComponents: ControllerComponent
     foundItem match {
       case Some(item) => Ok(Json.toJson(item))
       case None       => NotFound // 404 not found
+    }
+  }
+//  put
+  def addNewItem() = Action { implicit request =>
+    val content = request.body
+    val jsonObject = content.asJson
+    val todoListItem: Option[NewTodoListItem] =
+      jsonObject.flatMap(
+        Json.fromJson[NewTodoListItem](_).asOpt
+      )
+
+    todoListItem match {
+      case Some(newItem) =>
+        val nextId = todoList.map(_.id).max + 1
+        val toBeAdded = TodoListItem(nextId, newItem.description, false)
+        todoList += toBeAdded
+        Created(Json.toJson(toBeAdded))
+      case None =>
+        BadRequest
     }
   }
 }
