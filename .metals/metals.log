@@ -1,0 +1,167 @@
+2025.12.10 12:34:39 INFO  Started: Metals version 1.6.4 in folders 'C:\Users\ella5\nology\scala\learning\play-1' for client Visual Studio Code 1.106.3.[0m
+2025.12.10 12:34:43 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.[0m
+2025.12.10 12:34:47 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:34:52 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:34:55 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:34:55 INFO  running 'C:\Program Files\Java\jdk-21\bin\java.exe -Djline.terminal=jline.UnsupportedTerminal -Dsbt.log.noformat=true -Dfile.encoding=UTF-8 -jar C:\Users\ella5\AppData\Local\Temp\metals9946125398921984332\sbt-launch.jar -Dbloop.export-jar-classifiers=sources bloopInstall'[0m
+2025.12.10 12:34:59 ERROR sbt.internal.ServerAlreadyBootingException: java.io.IOException: Could not create lock for \\.\pipe\sbt-load7474461012938050864_lock, error 5[0m
+2025.12.10 12:34:59 INFO  sbt thinks that server is already booting because of this exception:[0m
+2025.12.10 12:34:59 ERROR 	at sbt.internal.BootServerSocket.newSocket(BootServerSocket.java:357)[0m
+2025.12.10 12:34:59 ERROR 	at sbt.internal.BootServerSocket.<init>(BootServerSocket.java:296)[0m
+2025.12.10 12:34:59 ERROR 	at sbt.xMain$.getSocketOrExit(Main.scala:153)[0m
+2025.12.10 12:34:59 ERROR 	at sbt.xMain$.bootServerSocket$lzycompute$1(Main.scala:79)[0m
+2025.12.10 12:34:59 ERROR 	at sbt.xMain$.bootServerSocket$1(Main.scala:79)[0m
+2025.12.10 12:34:59 ERROR 	at sbt.xMain$.withStreams$1(Main.scala:87)[0m
+2025.12.10 12:34:59 ERROR 	at sbt.xMain$.run(Main.scala:124)[0m
+2025.12.10 12:34:59 ERROR 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)[0m
+2025.12.10 12:34:59 ERROR 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)[0m
+2025.12.10 12:34:59 ERROR 	at sbt.internal.XMainConfiguration.run(XMainConfiguration.java:59)[0m
+2025.12.10 12:34:59 ERROR 	at sbt.xMain.run(Main.scala:48)[0m
+2025.12.10 12:34:59 ERROR 	at xsbt.boot.Launch$.$anonfun$run$1(Launch.scala:149)[0m
+2025.12.10 12:34:59 ERROR 	at xsbt.boot.Launch$.withContextLoader(Launch.scala:176)[0m
+2025.12.10 12:34:59 ERROR 	at xsbt.boot.Launch$.run(Launch.scala:149)[0m
+2025.12.10 12:34:59 ERROR 	at xsbt.boot.Launch$.$anonfun$apply$1(Launch.scala:44)[0m
+2025.12.10 12:34:59 ERROR 	at xsbt.boot.Launch$.launch(Launch.scala:159)[0m
+2025.12.10 12:34:59 ERROR 	at xsbt.boot.Launch$.apply(Launch.scala:44)[0m
+2025.12.10 12:34:59 ERROR 	at xsbt.boot.Launch$.apply(Launch.scala:21)[0m
+2025.12.10 12:34:59 ERROR 	at xsbt.boot.Boot$.runImpl(Boot.scala:78)[0m
+2025.12.10 12:34:59 ERROR 	at xsbt.boot.Boot$.run(Boot.scala:73)[0m
+2025.12.10 12:34:59 ERROR 	at xsbt.boot.Boot$.main(Boot.scala:21)[0m
+2025.12.10 12:34:59 ERROR 	at xsbt.boot.Boot.main(Boot.scala)[0m
+2025.12.10 12:34:59 ERROR Caused by: java.io.IOException: Could not create lock for \\.\pipe\sbt-load7474461012938050864_lock, error 5[0m
+2025.12.10 12:34:59 ERROR 	at org.scalasbt.ipcsocket.Win32NamedPipeServerSocket.<init>(Win32NamedPipeServerSocket.java:129)[0m
+2025.12.10 12:34:59 ERROR 	at org.scalasbt.ipcsocket.Win32NamedPipeServerSocket.<init>(Win32NamedPipeServerSocket.java:48)[0m
+2025.12.10 12:34:59 ERROR 	at sbt.internal.BootServerSocket.newSocket(BootServerSocket.java:351)[0m
+2025.12.10 12:34:59 ERROR 	... 21 more[0m
+2025.12.10 12:34:59 INFO  time: ran 'sbt bloopInstall' in 4.02s[0m
+2025.12.10 12:34:59 ERROR sbt command failed: C:\Program Files\Java\jdk-21\bin\java.exe -Djline.terminal=jline.UnsupportedTerminal -Dsbt.log.noformat=true -Dfile.encoding=UTF-8 -jar C:\Users\ella5\AppData\Local\Temp\metals9946125398921984332\sbt-launch.jar -Dbloop.export-jar-classifiers=sources bloopInstall[0m
+2025.12.10 12:34:59 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:34:59 WARN  no build target for: C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala[0m
+2025.12.10 12:35:42 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:35:45 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:13 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:13 WARN  no build target for: C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala[0m
+2025.12.10 12:48:13 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:15 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:25 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:25 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:26 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:26 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:27 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:27 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:27 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:27 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:27 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:28 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:28 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:28 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:29 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:48:29 INFO  Created report: Optional[file:///C:/Users/ella5/nology/scala/learning/play-1/app/controllers/HomeController.scala][0m
+2025.12.10 12:48:29 INFO  empty definition using pc, found symbol in pc: `<none>`. (full report at: "C:\Users\ella5\nology\scala\learning\play-1\.metals\.reports\metals-full\2025-12-10\r_empty-definition_12-48-29-333.md")[0m
+2025.12.10 12:48:29 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+Downloading https://repo1.maven.org/maven2/org/scalameta/scalafmt-core_2.13/3.10.0/scalafmt-core_2.13-3.10.0.pom
+Downloaded https://repo1.maven.org/maven2/org/scalameta/scalafmt-core_2.13/3.10.0/scalafmt-core_2.13-3.10.0.pom
+Downloading https://repo1.maven.org/maven2/org/scalameta/scalafmt-macros_2.13/3.10.0/scalafmt-macros_2.13-3.10.0.pom
+Downloading https://repo1.maven.org/maven2/org/scalameta/scalafmt-config_2.13/3.10.0/scalafmt-config_2.13-3.10.0.pom
+Downloaded https://repo1.maven.org/maven2/org/scalameta/scalafmt-macros_2.13/3.10.0/scalafmt-macros_2.13-3.10.0.pom
+Downloaded https://repo1.maven.org/maven2/org/scalameta/scalafmt-config_2.13/3.10.0/scalafmt-config_2.13-3.10.0.pom
+Downloading https://repo1.maven.org/maven2/org/scalameta/scalafmt-core_2.13/3.10.0/scalafmt-core_2.13-3.10.0.jar
+Downloading https://repo1.maven.org/maven2/org/scalameta/scalafmt-config_2.13/3.10.0/scalafmt-config_2.13-3.10.0.jar
+Downloading https://repo1.maven.org/maven2/org/scalameta/scalafmt-macros_2.13/3.10.0/scalafmt-macros_2.13-3.10.0.jar
+Downloaded https://repo1.maven.org/maven2/org/scalameta/scalafmt-macros_2.13/3.10.0/scalafmt-macros_2.13-3.10.0.jar
+Downloaded https://repo1.maven.org/maven2/org/scalameta/scalafmt-config_2.13/3.10.0/scalafmt-config_2.13-3.10.0.jar
+Downloaded https://repo1.maven.org/maven2/org/scalameta/scalafmt-core_2.13/3.10.0/scalafmt-core_2.13-3.10.0.jar
+2025.12.10 12:49:10 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:49:10 WARN  no build target for: C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala[0m
+2025.12.10 12:49:10 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:49:10 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:49:13 INFO  sbt 1.11.7 found for workspace.[0m
+2025.12.10 12:49:15 INFO  sbt thinks that server is already booting because of this exception:[0m
+2025.12.10 12:49:15 ERROR sbt.internal.ServerAlreadyBootingException: java.io.IOException: Could not create lock for \\.\pipe\sbt-load7474461012938050864_lock, error 5[0m
+2025.12.10 12:49:15 ERROR 	at sbt.internal.BootServerSocket.newSocket(BootServerSocket.java:357)[0m
+2025.12.10 12:49:15 ERROR 	at sbt.internal.BootServerSocket.<init>(BootServerSocket.java:296)[0m
+2025.12.10 12:49:15 ERROR 	at sbt.xMain$.getSocketOrExit(Main.scala:153)[0m
+2025.12.10 12:49:15 ERROR 	at sbt.xMain$.bootServerSocket$lzycompute$1(Main.scala:79)[0m
+2025.12.10 12:49:15 ERROR 	at sbt.xMain$.bootServerSocket$1(Main.scala:79)[0m
+2025.12.10 12:49:15 ERROR 	at sbt.xMain$.withStreams$1(Main.scala:87)[0m
+2025.12.10 12:49:15 ERROR 	at sbt.xMain$.run(Main.scala:124)[0m
+2025.12.10 12:49:15 ERROR 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)[0m
+2025.12.10 12:49:15 ERROR 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)[0m
+2025.12.10 12:49:15 ERROR 	at sbt.internal.XMainConfiguration.run(XMainConfiguration.java:59)[0m
+2025.12.10 12:49:15 ERROR 	at sbt.xMain.run(Main.scala:48)[0m
+2025.12.10 12:49:15 ERROR 	at xsbt.boot.Launch$.$anonfun$run$1(Launch.scala:149)[0m
+2025.12.10 12:49:15 ERROR 	at xsbt.boot.Launch$.withContextLoader(Launch.scala:176)[0m
+2025.12.10 12:49:15 ERROR 	at xsbt.boot.Launch$.run(Launch.scala:149)[0m
+2025.12.10 12:49:15 ERROR 	at xsbt.boot.Launch$.$anonfun$apply$1(Launch.scala:44)[0m
+2025.12.10 12:49:15 ERROR 	at xsbt.boot.Launch$.launch(Launch.scala:159)[0m
+2025.12.10 12:49:15 ERROR 	at xsbt.boot.Launch$.apply(Launch.scala:44)[0m
+2025.12.10 12:49:15 ERROR 	at xsbt.boot.Launch$.apply(Launch.scala:21)[0m
+2025.12.10 12:49:15 ERROR 	at xsbt.boot.Boot$.runImpl(Boot.scala:78)[0m
+2025.12.10 12:49:15 ERROR 	at xsbt.boot.Boot$.run(Boot.scala:73)[0m
+2025.12.10 12:49:15 ERROR 	at xsbt.boot.Boot$.main(Boot.scala:21)[0m
+2025.12.10 12:49:15 ERROR 	at xsbt.boot.Boot.main(Boot.scala)[0m
+2025.12.10 12:49:15 ERROR Caused by: java.io.IOException: Could not create lock for \\.\pipe\sbt-load7474461012938050864_lock, error 5[0m
+2025.12.10 12:49:15 ERROR 	at org.scalasbt.ipcsocket.Win32NamedPipeServerSocket.<init>(Win32NamedPipeServerSocket.java:129)[0m
+2025.12.10 12:49:15 ERROR 	at org.scalasbt.ipcsocket.Win32NamedPipeServerSocket.<init>(Win32NamedPipeServerSocket.java:48)[0m
+2025.12.10 12:49:15 ERROR 	at sbt.internal.BootServerSocket.newSocket(BootServerSocket.java:351)[0m
+2025.12.10 12:49:15 ERROR 	... 21 more[0m
+2025.12.10 12:49:15 INFO  time: ran 'sbt bspConfig' in 2.06s[0m
+2025.12.10 12:49:15 ERROR Creation of .bsp/sbt failed with exit code: 2[0m
+2025.12.10 12:49:59 INFO  Shutting down server[0m
+2025.12.10 12:49:59 INFO  shutting down Metals[0m
+2025.12.10 12:49:59 INFO  Exiting server[0m
+2025.12.10 12:50:33 INFO  Started: Metals version 1.6.4 in folders 'C:\Users\ella5\nology\scala\learning\play-1' for client Visual Studio Code 1.106.3.[0m
+2025.12.10 12:50:35 WARN  Using H2 2.4.240 which is newer than the version Flyway has been verified with. The latest verified version of H2 is 2.3.232.[0m
+2025.12.10 12:50:36 INFO  sbt 1.11.7 found for workspace.[0m
+2025.12.10 12:50:39 INFO  sbt thinks that server is already booting because of this exception:[0m
+2025.12.10 12:50:39 ERROR sbt.internal.ServerAlreadyBootingException: java.io.IOException: Could not create lock for \\.\pipe\sbt-load7474461012938050864_lock, error 5[0m
+2025.12.10 12:50:39 ERROR 	at sbt.internal.BootServerSocket.newSocket(BootServerSocket.java:357)[0m
+2025.12.10 12:50:39 ERROR 	at sbt.internal.BootServerSocket.<init>(BootServerSocket.java:296)[0m
+2025.12.10 12:50:39 ERROR 	at sbt.xMain$.getSocketOrExit(Main.scala:153)[0m
+2025.12.10 12:50:39 ERROR 	at sbt.xMain$.bootServerSocket$lzycompute$1(Main.scala:79)[0m
+2025.12.10 12:50:39 ERROR 	at sbt.xMain$.bootServerSocket$1(Main.scala:79)[0m
+2025.12.10 12:50:39 ERROR 	at sbt.xMain$.withStreams$1(Main.scala:87)[0m
+2025.12.10 12:50:39 ERROR 	at sbt.xMain$.run(Main.scala:124)[0m
+2025.12.10 12:50:39 ERROR 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)[0m
+2025.12.10 12:50:39 ERROR 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)[0m
+2025.12.10 12:50:39 ERROR 	at sbt.internal.XMainConfiguration.run(XMainConfiguration.java:59)[0m
+2025.12.10 12:50:39 ERROR 	at sbt.xMain.run(Main.scala:48)[0m
+2025.12.10 12:50:39 ERROR 	at xsbt.boot.Launch$.$anonfun$run$1(Launch.scala:149)[0m
+2025.12.10 12:50:39 ERROR 	at xsbt.boot.Launch$.withContextLoader(Launch.scala:176)[0m
+2025.12.10 12:50:39 ERROR 	at xsbt.boot.Launch$.run(Launch.scala:149)[0m
+2025.12.10 12:50:39 ERROR 	at xsbt.boot.Launch$.$anonfun$apply$1(Launch.scala:44)[0m
+2025.12.10 12:50:39 ERROR 	at xsbt.boot.Launch$.launch(Launch.scala:159)[0m
+2025.12.10 12:50:39 ERROR 	at xsbt.boot.Launch$.apply(Launch.scala:44)[0m
+2025.12.10 12:50:39 ERROR 	at xsbt.boot.Launch$.apply(Launch.scala:21)[0m
+2025.12.10 12:50:39 ERROR 	at xsbt.boot.Boot$.runImpl(Boot.scala:78)[0m
+2025.12.10 12:50:39 ERROR 	at xsbt.boot.Boot$.run(Boot.scala:73)[0m
+2025.12.10 12:50:39 ERROR 	at xsbt.boot.Boot$.main(Boot.scala:21)[0m
+2025.12.10 12:50:39 ERROR 	at xsbt.boot.Boot.main(Boot.scala)[0m
+2025.12.10 12:50:39 ERROR Caused by: java.io.IOException: Could not create lock for \\.\pipe\sbt-load7474461012938050864_lock, error 5[0m
+2025.12.10 12:50:39 ERROR 	at org.scalasbt.ipcsocket.Win32NamedPipeServerSocket.<init>(Win32NamedPipeServerSocket.java:129)[0m
+2025.12.10 12:50:39 ERROR 	at org.scalasbt.ipcsocket.Win32NamedPipeServerSocket.<init>(Win32NamedPipeServerSocket.java:48)[0m
+2025.12.10 12:50:39 ERROR 	at sbt.internal.BootServerSocket.newSocket(BootServerSocket.java:351)[0m
+2025.12.10 12:50:39 ERROR 	... 21 more[0m
+2025.12.10 12:50:39 INFO  time: ran 'sbt bspConfig' in 3.09s[0m
+2025.12.10 12:50:39 ERROR Creation of .bsp/sbt failed with exit code: 2[0m
+2025.12.10 12:50:39 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:50:39 WARN  no build target for: C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala[0m
+2025.12.10 12:52:19 WARN  no build target for: C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala[0m
+2025.12.10 12:52:19 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:52:19 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:52:20 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:52:24 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:52:25 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:52:25 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:52:27 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:52:28 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:52:27 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:52:28 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:52:28 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:52:29 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:52:29 WARN  no build target for: C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala[0m
+2025.12.10 12:52:29 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:52:29 INFO  no build target found for C:\Users\ella5\nology\scala\learning\play-1\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.6[0m
+2025.12.10 12:59:55 INFO  Shutting down server[0m
+2025.12.10 12:59:55 INFO  shutting down Metals[0m
+2025.12.10 12:59:55 INFO  Exiting server[0m
