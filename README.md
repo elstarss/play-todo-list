@@ -1,6 +1,6 @@
 # Todo API — First Steps with Play & Scala
 This project is a simple **Todo List REST API** built using the **Play Framework**   
-It was created as part of learning the basics of backend development in Scala and exploring how Play handles routing, controllers, JSON, and testing.
+I used https://www.baeldung.com/scala/play-rest-api as a start point to build off and have added additional routes, features and testing. It was created as part of learning the basics of backend development in Scala and exploring how Play handles routing, controllers, JSON, and testing.
 Through making the app I have covered core patterns used in API development: handling requests, validating JSON, responding with appropriate HTTP status codes, and writing meaningful tests.
 
 ---
