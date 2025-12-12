@@ -6,7 +6,6 @@ Through making the app I have covered core patterns used in API development: han
 ---
 
 ## Features
-
 - **GET /todo** – Retrieve the full list of todo items
 - **GET /todo/:id** – Retrieve a single item by ID
 - **POST /todo** – Add a new todo item
@@ -40,10 +39,18 @@ sbt test
 ---
 
 ## Project Goals
-
 The aim of this project were to learn and practice:
 - How Play handles routing, controllers, and parsing requests
 - How to work with Play JSON and case-class validation
 - How to build RESTful endpoints in Scala
 - How to use Option, pattern matching, and functional idioms in real code
 - How to include testing in the play framework 
+
+## Areas left to explore
+I would like to continue adding to this project as a way to explore more of the play framework and Scala language. On my list to explore are:
+- [ ] Persistence- integrate a persistent data base instead of using the in memory ListBuffer
+- [ ] Routing features- such as query parameters
+- [ ] Error handling - using a global error handler and returning informative custom json responses
+- [ ] Dependency injection & services - moving business logic into dedicated service and injecting this into the controller 
+- [ ] Improve API features - allow for filtering, sorting etc e.g. filter only non-completed tasks 
+- [ ] Authentication - explore using basic authentication and tokens 
