@@ -33,24 +33,23 @@ class TodoListController @Inject()(val controllerComponents: ControllerComponent
     }
   }
 //  post
-  def addNewItem() = Action { implicit request =>
-    val content = request.body
-    val jsonObject = content.asJson
-    val todoListItem: Option[NewTodoListItem] =
-      jsonObject.flatMap(
-        Json.fromJson[NewTodoListItem](_).asOpt
+def addNewItem(): Action[JsValue] = Action(parse.json) { request =>
+  request.body.validate[NewTodoListItem].fold(
+    errors => BadRequest(JsError.toJson(errors)),
+    newItem => {
+      val nextId = if (todoList.isEmpty) 1 else todoList.map(_.id).max + 1
+
+      val toBeAdded = TodoListItem(
+        id = nextId,
+        description = newItem.description,
+        completed = newItem.completed.getOrElse(false)
       )
 
-    todoListItem match {
-      case Some(newItem) =>
-        val nextId = todoList.map(_.id).max + 1
-        val toBeAdded = TodoListItem(nextId, newItem.description, false)
-        todoList += toBeAdded
-        Created(Json.toJson(toBeAdded))
-      case None =>
-        BadRequest
+      todoList += toBeAdded
+      Created(Json.toJson(toBeAdded))
     }
-  }
+  )
+}
 //  patch
 //  Action[JsValue] is a request handler that expects JSON in the body
   def updateById(itemId: Long): Action[JsValue] =
