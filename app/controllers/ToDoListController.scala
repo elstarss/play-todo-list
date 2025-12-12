@@ -7,14 +7,16 @@ import play.api.libs.json._
 import scala.collection.mutable
 import models.TodoListItem
 import models.NewTodoListItem
+import models.TodoUpdate
 
 @Singleton
 class TodoListController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
   private val todoList = new mutable.ListBuffer[TodoListItem]()
   implicit val todoListJson = Json.format[TodoListItem]
   implicit val newTodoListJson = Json.format[NewTodoListItem]
-  todoList += TodoListItem(1, "test", true)
-  todoList += TodoListItem(2, "some other value", false)
+//  default items on list
+  todoList += TodoListItem(1, "clean dishes", true)
+  todoList += TodoListItem(2, "go swimming", false)
 //  get
   def getAll(): Action[AnyContent] = Action {
     if (todoList.isEmpty) {
@@ -54,9 +56,30 @@ class TodoListController @Inject()(val controllerComponents: ControllerComponent
   def updateById(itemId: Long): Action[JsValue] =
 //  if the body is not raw json will produce a 400 response
     Action(parse.json) { request =>
-    val update = request.body.validate[TodoUpdate]
+//      .validate tries to turn incoming json into a TodoUpdate object -> JsResult[TodoUpdate], either a success or error
+      val update: JsResult[TodoUpdate] = request.body.validate[TodoUpdate]
 
-    update.fold()
+
+//      at this point update is either a jsSuccess- update object or JsError - errors
+//      .fold lets us handle either of these outcomes in a similar way to match. fold is often used with json validation as it is binary pass fail
+    update.fold(
+      errors => BadRequest(JsError.toJson(errors)), // 400 bad request
+      updateFields => {
+        todoList.find(_.id == itemId) match {
+        case None => NotFound
+        case Some(oldItem) =>
+//          merge old and new fields
+          val updatedItem = oldItem.copy(
+            description = updateFields.description.getOrElse(oldItem.description),
+            completed = updateFields.completed.getOrElse(oldItem.completed)
+          )
+//          replace item inside ListBuffer entire list
+          val itemIndex = todoList.indexWhere(_.id == itemId)
+          todoList.update(itemIndex, updatedItem)
+          Ok(Json.toJson(updatedItem))
+      }
+        }
+    )
 
   }
 //  delete

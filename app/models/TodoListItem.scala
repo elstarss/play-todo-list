@@ -4,4 +4,4 @@ import play.api.libs.json._
 
 
 
-case class TodoListItem(id: Long, description: String, isItDone: Boolean)
+case class TodoListItem(id: Long, description: String, completed: Boolean)
