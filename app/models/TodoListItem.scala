@@ -7,7 +7,6 @@ case class TodoListItem(
                          description: String,
                          completed: Boolean
                        )
-
 object TodoListItem {
   implicit val todoListItemFormat: OFormat[TodoListItem] = Json.format[TodoListItem]
 }
