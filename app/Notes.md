@@ -1,4 +1,4 @@
-### Notes and useful references on play as I learn! 
+# Notes and useful references on play as I learn! 
 
 ## Scenarios, response codes, ScalaTest assertions
 Scenario	Controller Response	HTTP Code	Test Assertion
@@ -12,7 +12,7 @@ Invalid JSON shape	BadRequest(JsonError)	400	status(result) mustBe BAD_REQUEST
 ---
 
 ## Overview on how play projects are typically setup 
-# Example project setup
+### Example project setup
 /app
 /controllers
 /models
@@ -33,30 +33,30 @@ Invalid JSON shape	BadRequest(JsonError)	400	status(result) mustBe BAD_REQUEST
 /build.sbt         <- sbt project configuration
 
 ## Key components 
-# Controllers
+#### Controllers
 - handle HTTP requests
 - co-ordinate between request data, services/models and responses
   - Parse request (forms like JSON, query params, form data)
   - call a service/ repository to do the work
   - return a result (JSON, HTML, redirect etc)
 - can be synchronous (Action) or asynchronous (Action.async)
-# Models
+#### Models
 - represent the data in the app 
 - often use case classes in Scala for immutability and pattern matching
 - can include domain logic (e.g. validation functions), JSON formatters
-# Services
+#### Services
 - business logic lives here, separate from controllers
 - controllers call services instead of directly manipulating data 
 - makes it easier to test business logic separately, without HTTP
 - keeps controllers thin and focussed 
 - works well with dependency injection
-# Views
+#### Views
 - only needed if your app renders html, not for API-only apps
 - uses twirl templates- files with .scala.html
-# Routes
+#### Routes
 - map http method + url path -> controller method 
 - play uses reverse routing to generate URLs safely in code 
-# Persistence/ database layer
+#### Persistence/ database layer
 - typically slick (scala's db library) or JDBC
 - example workflow:
   - controller receives request
@@ -65,13 +65,13 @@ Invalid JSON shape	BadRequest(JsonError)	400	status(result) mustBe BAD_REQUEST
   - repository performs query and returns data 
   - service returns processed data to the controller 
   - controller returns JSON response 
-# Dependency injection
+#### Dependency injection
 - play uses Guice for dependency injection by default
 - controllers and services are injected automatically 
 - promotes separation of concerns 
 - makes testing easier (mock services)
 - makes it easy to swap implementations 
-# Overview flow
+#### Overview flow
 HTTP request -> Router -> Controller -> Service -> Repository/ DB <- Response (JSON/ HTTP status)
 - Controllers: translate HTTP -> business logic + JSON response
 - Services: business rules, data manipulation

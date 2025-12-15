@@ -10,8 +10,10 @@ scalaVersion := "2.13.18"
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "7.0.2" % Test
 
-// Adds additional packages into Twirl
-//TwirlKeys.templateImports += "com.example.controllers._"
+libraryDependencies ++= Seq(
+  guice,
+  "com.typesafe.play" %% "play-slick" % "5.1.0",
+  "com.typesafe.play" %% "play-slick-evolutions" % "5.1.0",
+  "com.mysql" % "mysql-connector-j" % "8.0.33"
+)
 
-// Adds additional packages into conf/routes
-// play.sbt.routes.RoutesKeys.routesImport += "com.example.binders._"

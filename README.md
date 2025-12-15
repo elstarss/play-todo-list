@@ -1,6 +1,7 @@
 # Todo API — First Steps with Play & Scala
-This project is a simple **Todo List REST API** built using the **Play Framework**   
-I used https://www.baeldung.com/scala/play-rest-api as a start point to build off and have added additional routes, features and testing. It was created as part of learning the basics of backend development in Scala and exploring how Play handles routing, controllers, JSON, and testing.
+This project is a simple **Todo List REST API** built using the **Play Framework.** 
+
+I used https://www.baeldung.com/scala/play-rest-api as a start point to build off and have added additional routes, features and testing. The app was created as part of learning the basics of backend development in Scala and exploring how Play handles routing, controllers, JSON, and testing.
 Through making the app I have covered core patterns used in API development: handling requests, validating JSON, responding with appropriate HTTP status codes, and writing meaningful tests.
 
 ---
@@ -20,8 +21,8 @@ The app stores todo items using an in-memory `ListBuffer` for simplicity.
 
 ## Running the Project
 Make sure you have sbt installed, then run:
-sbt run
 
+sbt run
 The server will start at:
 http://localhost:9000
 
@@ -30,7 +31,7 @@ Play provides a test toolkit that lets you simulate requests through your real r
 Run all tests:
 sbt test
 
-# Tests cover:
+### Tests cover:
 - GET, POST, PATCH, DELETE endpoints
 - JSON validation
 - Correct HTTP status codes
