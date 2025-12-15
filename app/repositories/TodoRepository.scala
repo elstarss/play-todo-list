@@ -23,5 +23,5 @@ class TodoRepository @Inject()(db: Database)(implicit ec: ExecutionContext) {
     db.run(insertQuery += TodoListItem(0, newItem.description, completed))
   }
 
-  def deleteAll(): Future[Int] = db.run(todos.delete)
+  def deleteAll(): Future[Int] = db.run(todos.delete) // returns a Future for aync- all DB calls are async in play
 }

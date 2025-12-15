@@ -78,3 +78,18 @@ HTTP request -> Router -> Controller -> Service -> Repository/ DB <- Response (J
 - Repository/ database: persistent storage
 - Views (optional): HTML rendering
 
+
+ROUTES
+# Get items by ID
+# Everything after  t o d o will be assigned to itemId variable
+GET    /todo/:itemId           controllers.TodoListController.getById(itemId: Long)
+
+#add new routes
+POST     /todo                      controllers.TodoListController.addNewItem
+
+#patch- update part of route
+PATCH    /todo/:id    controllers.TodoListController.updateById(id: Long)
+
+#delete by ID
+DELETE  /todo/deleteById/:itemId            controllers.TodoListController.deleteById(itemId: Long)
+DELETE  /todo/deleteAll            controllers.TodoListController.deleteAll
