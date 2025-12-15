@@ -1,3 +1,5 @@
 # Routes
 # Get all to do items
 GET     /todo                       controllers.TodoListController.getAll
+#add new routes
+POST     /todo                      controllers.TodoListController.addNewItem

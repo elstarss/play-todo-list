@@ -11,19 +11,28 @@ import models.TodoListItem
 import models.NewTodoListItem
 import models.TodoUpdate
 
-import scala.concurrent.ExecutionContext
+import scala.concurrent.{ExecutionContext, Future}
 
 
 class TodoListController @Inject()(
                                     val controllerComponents: ControllerComponents,
                                     todoRepository: TodoRepository
                                   )(implicit ec: ExecutionContext) extends BaseController {
-
+// GET
   def getAll(): Action[AnyContent] = Action.async {
     todoRepository.findAll().map { items =>
       if (items.isEmpty) NoContent
       else Ok(Json.toJson(items))
     }
+  }
+//  POST
+  def addNewItem(): Action[JsValue] = Action(parse.json).async { implicit request =>
+    request.body.validate[NewTodoListItem].fold(
+      errors => Future.successful(BadRequest(JsError.toJson(errors))),
+      newItem => todoRepository.insert(newItem).map { created =>
+        Created(Json.toJson(created))
+      }
+    )
   }
 }
 
