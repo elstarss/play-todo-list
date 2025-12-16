@@ -79,16 +79,26 @@ HTTP request -> Router -> Controller -> Service -> Repository/ DB <- Response (J
 - Views (optional): HTML rendering
 
 
+## Adding persistence
+Action: part of the play framework. An object that has the method apply(block: => Result).
+Most of the requests handled by Play are handled by an Action. An Action returns a play.api.mcv.Result, representing the HTTP response 
+to send to the web client. 
+
+### Responding to async queries
+In Play we are regularly doing async requests, meaning we have to handle data potentially not returning the expected result. This is why
+we return Futures from the repository. Clients may also make requests of the API that cannot be fulfilled, meaning we have to anticipate
+null results, for this we use Options- which may contain Some or None. A common pattern to pattern match on Options in Scala is using 
+map {case Some => Ok(Json.toJson(Item)) case None => NotFound}. This handles both cases and ties to REST semantics.
+
+Values returned from the repository are Futures. You cannot pattern match on a Future. You must wait asynchronously, using map. Then, 
+pattern match the Option inside.
+Pattern to patch by id:
+JSON → validate → findById (Future) → map → Option match → update → save → Result
+
+map -> transform a value
+flatMap -> chain async operations 
+
 ROUTES
-# Get items by ID
-# Everything after  t o d o will be assigned to itemId variable
-GET    /todo/:itemId           controllers.TodoListController.getById(itemId: Long)
-
-#add new routes
-POST     /todo                      controllers.TodoListController.addNewItem
-
-#patch- update part of route
-PATCH    /todo/:id    controllers.TodoListController.updateById(id: Long)
 
 #delete by ID
 DELETE  /todo/deleteById/:itemId            controllers.TodoListController.deleteById(itemId: Long)

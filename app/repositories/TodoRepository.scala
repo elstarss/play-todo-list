@@ -30,6 +30,11 @@ class TodoRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
     db.run(insertQuery += TodoListItem(0, newItem.description, completed))
   }
 
+  def update(item: TodoListItem): Future[Int] =
+    db.run(
+      todos.filter(_.id === item.id).update(item)
+    )
+
   def deleteAll(): Future[Int] =
     db.run(todos.delete)
 }

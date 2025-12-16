@@ -18,14 +18,15 @@ class TodoListController @Inject()(
                                     val controllerComponents: ControllerComponents,
                                     todoRepository: TodoRepository
                                   )(implicit ec: ExecutionContext) extends BaseController {
-// GET
+  // GET
   def getAll(): Action[AnyContent] = Action.async {
     todoRepository.findAll().map { items =>
       if (items.isEmpty) NoContent
       else Ok(Json.toJson(items))
     }
   }
-  def getById(id: Long): Action[AnyContent] = Action.async {
+
+  def getById(id: Long): Action[AnyContent] = Action.async { // aync as findById returns a Future
     todoRepository.findById(id).map {
       case Some(item) =>
         Ok(Json.toJson(item))
@@ -33,7 +34,8 @@ class TodoListController @Inject()(
         NotFound
     }
   }
-//  POST
+
+  //  POST
   def addNewItem(): Action[JsValue] = Action(parse.json).async { implicit request =>
     request.body.validate[NewTodoListItem].fold(
       errors => Future.successful(BadRequest(JsError.toJson(errors))),
@@ -42,51 +44,30 @@ class TodoListController @Inject()(
       }
     )
   }
+// PATCH
+  def updateById(itemId: Long): Action[JsValue] =
+    Action(parse.json).async { implicit request =>
+      request.body.validate[TodoUpdate].fold(
+        errors => Future.successful(BadRequest(JsError.toJson(errors))), // just validating for correct json in body
+
+        updateFields =>
+          todoRepository.findById(itemId).flatMap { // flatMap waits and returns an Option
+            case None =>
+              Future.successful(NotFound)
+            case Some(oldItem) =>
+              val updatedItem = oldItem.copy(
+                description = updateFields.description.getOrElse(oldItem.description),
+                completed = updateFields.completed.getOrElse(oldItem.completed)
+              )
+              todoRepository.update(updatedItem).map { _ =>
+                Ok(Json.toJson(updatedItem))
+              }
+          }
+      )
+    }
 }
 
 
-
-
-
-//  def getById(itemId: Long): Action[AnyContent] = Action {
-//    val foundItem = todoList.find(_.id == itemId)
-//    foundItem match {
-//      case Some(item) => Ok(Json.toJson(item))
-//      case None       => NotFound // 404 not found
-//    }
-//  }
-
-////  patch
-////  Action[JsValue] is a request handler that expects JSON in the body
-//  def updateById(itemId: Long): Action[JsValue] =
-////  if the body is not raw json will produce a 400 response
-//    Action(parse.json) { request =>
-////      .validate tries to turn incoming json into a TodoUpdate object -> JsResult[TodoUpdate], either a success or error
-//      val update: JsResult[TodoUpdate] = request.body.validate[TodoUpdate]
-//
-//
-////      at this point update is either a jsSuccess- update object or JsError - errors
-////      .fold lets us handle either of these outcomes in a similar way to match. fold is often used with json validation as it is binary pass fail
-//    update.fold(
-//      errors => BadRequest(JsError.toJson(errors)), // 400 bad request
-//      updateFields => {
-//        todoList.find(_.id == itemId) match {
-//        case None => NotFound
-//        case Some(oldItem) =>
-////          merge old and new fields
-//          val updatedItem = oldItem.copy(
-//            description = updateFields.description.getOrElse(oldItem.description),
-//            completed = updateFields.completed.getOrElse(oldItem.completed)
-//          )
-////          replace item inside ListBuffer entire list
-//          val itemIndex = todoList.indexWhere(_.id == itemId)
-//          todoList.update(itemIndex, updatedItem)
-//          Ok(Json.toJson(updatedItem))
-//      }
-//        }
-//    )
-//
-//  }
 ////  delete
 //  def deleteById(itemId: Long): Action[AnyContent] = Action {
 //    val itemIndex = todoList.indexWhere(_.id == itemId)
