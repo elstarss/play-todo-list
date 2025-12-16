@@ -25,6 +25,14 @@ class TodoListController @Inject()(
       else Ok(Json.toJson(items))
     }
   }
+  def getById(id: Long): Action[AnyContent] = Action.async {
+    todoRepository.findById(id).map {
+      case Some(item) =>
+        Ok(Json.toJson(item))
+      case None =>
+        NotFound
+    }
+  }
 //  POST
   def addNewItem(): Action[JsValue] = Action(parse.json).async { implicit request =>
     request.body.validate[NewTodoListItem].fold(
@@ -39,22 +47,7 @@ class TodoListController @Inject()(
 
 
 
-//@Singleton
-//class TodoListController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
-//  private val todoList = new mutable.ListBuffer[TodoListItem]()
-//  implicit val todoListJson = Json.format[TodoListItem]
-//  implicit val newTodoListJson = Json.format[NewTodoListItem]
-////  default items on list
-//  todoList += TodoListItem(1, "clean dishes", true)
-//  todoList += TodoListItem(2, "go swimming", false)
-////  get
-//  def getAll(): Action[AnyContent] = Action {
-//    if (todoList.isEmpty) {
-//      NoContent
-//    } else {
-//      Ok(Json.toJson(todoList)) // 200 ok
-//    }
-//  }
+
 //  def getById(itemId: Long): Action[AnyContent] = Action {
 //    val foundItem = todoList.find(_.id == itemId)
 //    foundItem match {
@@ -62,24 +55,7 @@ class TodoListController @Inject()(
 //      case None       => NotFound // 404 not found
 //    }
 //  }
-////  post
-//def addNewItem(): Action[JsValue] = Action(parse.json) { request =>
-//  request.body.validate[NewTodoListItem].fold(
-//    errors => BadRequest(JsError.toJson(errors)),
-//    newItem => {
-//      val nextId = if (todoList.isEmpty) 1 else todoList.map(_.id).max + 1
-//
-//      val toBeAdded = TodoListItem(
-//        id = nextId,
-//        description = newItem.description,
-//        completed = newItem.completed.getOrElse(false)
-//      )
-//
-//      todoList += toBeAdded
-//      Created(Json.toJson(toBeAdded))
-//    }
-//  )
-//}
+
 ////  patch
 ////  Action[JsValue] is a request handler that expects JSON in the body
 //  def updateById(itemId: Long): Action[JsValue] =
