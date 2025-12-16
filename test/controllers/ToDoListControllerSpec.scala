@@ -12,6 +12,78 @@ class ToDoListControllerSpec extends PlaySpec with GuiceOneAppPerSuite with Befo
     super.beforeEach()
     route(app, FakeRequest(DELETE, "/todo"))
   }
+  "TodoListController GET /todo" should {
+    "return all tasks when they exist" in {
+      route(app,
+        FakeRequest(POST, "/todo")
+          .withJsonBody(Json.parse("""{"description":"one"}"""))
+      )
+      route(app,
+        FakeRequest(POST, "/todo")
+          .withJsonBody(Json.parse("""{"description":"two"}"""))
+      )
+      val result = route(app, FakeRequest(GET, "/todo")).get
+      status(result) mustBe OK
+      val json = contentAsJson(result)
+      json.as[Seq[JsValue]].size mustBe 2
+    }
+    "return 204 no content when no todos exist" in {
+      val request = FakeRequest(GET, "/todo")
+      val result = route(app, request).get
+      status(result) mustBe NO_CONTENT
+    }
+  }
+
+  "TodoListController POST /todo" should {
+  "create a new todo item and return 201" in {
+    val request = FakeRequest(POST, "/todo")
+      .withJsonBody(Json.parse("""{"description":"learn play"}"""))
+    val result = route(app, request).get
+    status(result) mustBe CREATED
+    val json = contentAsJson(result)
+    (json \ "id").as[Long] must be > 0L
+    (json \ "description").as[String] mustBe "learn play"
+    (json \ "completed").as[Boolean] mustBe false
+  }
+    "return 400 for empty JSON" in {
+      val request = FakeRequest(POST, "/todo")
+        .withJsonBody(Json.parse("""{}"""))
+      val result = route(app, request).get
+      status(result) mustBe BAD_REQUEST
+    }
+    "return 400 for invalid JSON" in {
+      val request = FakeRequest(POST, "/todo")
+        .withJsonBody(Json.parse("""{"title":"new task"}"""))
+      val result = route(app, request).get
+      status(result) mustBe BAD_REQUEST
+    }
+}
+
+  "TodoListController PATCH /todo" should {
+    "update only the completed field" in {
+      val postResult = route(app, FakeRequest(POST, "/todo")
+      .withJsonBody(Json.parse("""{"description}":"learn patch"""))
+      ).get
+      val id = (contentAsJson(postResult) \ "id").as[Long]
+//      just patching the completed field
+      val patchResult = route(app,
+        FakeRequest(PATCH, s"/todo/$id")
+      .withJsonBody(Json.parse("""{"completed":"true"""))
+      ).get
+      status(patchResult) mustBe OK
+      val json = contentAsJson(patchResult)
+      (json \ "description").as[String] mustBe "learn patch"
+      (json \ "completed").as[Boolean] mustBe true
+    }
+    "return 404 when updating an absent todo" in {
+      val patchResult = route(app,
+        FakeRequest(PATCH, "/todo/9999")
+          .withJsonBody(Json.parse("""{"completed": true}"""))
+      ).get
+      status(patchResult) mustBe NOT_FOUND
+    }
+  }
+
   "TodoListController DELETE /todo" should {
     "delete all items" in {
       route(app, FakeRequest(POST, "/todo")
@@ -42,66 +114,3 @@ class ToDoListControllerSpec extends PlaySpec with GuiceOneAppPerSuite with Befo
       }
     }
 }
-
-//"TodoListController GET /todo" should {
-//    "return all items" in {
-//      val request = FakeRequest(GET, "/todo")
-//      val result = route(app, request).get
-//      status(result) mustBe OK
-//      contentType(result) mustBe Some("application/json")
-//      val json = contentAsJson(result)
-//      json.as[Seq[JsValue]].size must be >= 1
-//    }
-//    "return item by id" in {
-//      val request = FakeRequest(GET, "/todo/2")
-//      val result = route(app, request).get
-//      status(result) mustBe OK
-//      contentType(result) mustBe Some("application/json")
-//      val json = contentAsJson(result)
-//      (json \ "description").as[String] mustBe "go swimming"
-//      (json \ "completed").as[Boolean] mustBe false
-//    }
-//  }
-//  "TodoListController POST /todo" should {
-//    "create a new item" in {
-//      val newItemJson = Json.obj(
-//        "description" -> "Write tests",
-//        "completed" -> true
-//      )
-//      val request = FakeRequest(POST, "/todo")
-//        .withJsonBody(newItemJson)
-//      val result = route(app, request).get
-//      status(result) mustBe CREATED
-//
-//      val json = contentAsJson(result)
-//      (json \ "description").as[String] mustBe "Write tests"
-//      (json \ "completed").as[Boolean] mustBe true
-//    }
-//    "create a new item without including completed status" in {
-//      val newItemJson = Json.obj(
-//        "description" -> "Write tests",
-//      )
-//      val request = FakeRequest(POST, "/todo")
-//        .withJsonBody(newItemJson)
-//      val result = route(app, request).get
-//      status(result) mustBe CREATED
-//
-//      val json = contentAsJson(result)
-//      (json \ "description").as[String] mustBe "Write tests"
-//      (json \ "completed").as[Boolean] mustBe false
-//    }
-//  }
-//    "TodoListController PATCH /todo/:id" should {
-//    "update an existing item" in {
-//      val updateJson = Json.obj(
-//        "completed" -> true
-//      )
-//      val request = FakeRequest(PATCH, "/todo/1")
-//        .withJsonBody(updateJson)
-//      val result = route(app, request).get
-//      status(result) mustBe OK
-//      (contentAsJson(result) \ "completed").as[Boolean] mustBe true
-//    }
-//  }
-
-//    }
