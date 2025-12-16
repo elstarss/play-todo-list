@@ -37,4 +37,7 @@ class TodoRepository @Inject()(dbConfigProvider: DatabaseConfigProvider)(implici
 
   def deleteAll(): Future[Int] =
     db.run(todos.delete)
+
+  def deleteById(id: Long): Future[Int] =
+    db.run(todos.filter(_.id === id).delete)
 }

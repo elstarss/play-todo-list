@@ -8,3 +8,7 @@ POST     /todo                      controllers.TodoListController.addNewItem
 
 #PATCH
 PATCH    /todo/:id    controllers.TodoListController.updateById(id: Long)
+
+#DELETE
+DELETE  /todo/deleteById/:itemId            controllers.TodoListController.deleteById(itemId: Long)
+DELETE  /todo/deleteAll            controllers.TodoListController.deleteAll

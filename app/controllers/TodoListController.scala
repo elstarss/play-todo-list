@@ -1,13 +1,9 @@
 package controllers
 
 import javax.inject._
-import play.api._
 import play.api.mvc._
 import play.api.libs.json._
 import repositories.TodoRepository
-
-import scala.collection.mutable
-import models.TodoListItem
 import models.NewTodoListItem
 import models.TodoUpdate
 
@@ -25,7 +21,6 @@ class TodoListController @Inject()(
       else Ok(Json.toJson(items))
     }
   }
-
   def getById(id: Long): Action[AnyContent] = Action.async { // aync as findById returns a Future
     todoRepository.findById(id).map {
       case Some(item) =>
@@ -44,6 +39,7 @@ class TodoListController @Inject()(
       }
     )
   }
+
 // PATCH
   def updateById(itemId: Long): Action[JsValue] =
     Action(parse.json).async { implicit request =>
@@ -65,24 +61,16 @@ class TodoListController @Inject()(
           }
       )
     }
+//   DELETE
+def deleteAll(): Action[AnyContent] = Action.async {
+  todoRepository.deleteAll().map { _ =>
+    NoContent // just returns 204 no content whether the table was empty or not
+   }
+  }
+  def deleteById(itemId: Long): Action[AnyContent] = Action.async {
+    todoRepository.deleteById(itemId).map{
+      case 0 => NotFound
+      case _ => NoContent
+    }
+  }
 }
-
-
-////  delete
-//  def deleteById(itemId: Long): Action[AnyContent] = Action {
-//    val itemIndex = todoList.indexWhere(_.id == itemId)
-//    if(itemIndex == -1) NotFound
-//    else {
-//      todoList.remove(itemIndex)
-//      NoContent
-//    }
-//  }
-//  def deleteAll(): Action[AnyContent] = Action{
-//    if (todoList.isEmpty) {
-//      NoContent
-//    } else {
-//      todoList.clear()
-//      NoContent
-//    }
-//  }
-//}

@@ -97,9 +97,3 @@ JSON → validate → findById (Future) → map → Option match → update → 
 
 map -> transform a value
 flatMap -> chain async operations 
-
-ROUTES
-
-#delete by ID
-DELETE  /todo/deleteById/:itemId            controllers.TodoListController.deleteById(itemId: Long)
-DELETE  /todo/deleteAll            controllers.TodoListController.deleteAll
